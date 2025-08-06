@@ -12,14 +12,14 @@ def send_keys_slowly(element, text, min_delay=0.0, max_delay=0.0):
         time.sleep(random.uniform(min_delay, max_delay))
 
 def main():
-    driver = uc.Chrome()  # undetected Chrome
+    driver = uc.Chrome(version_main=138)
 
     with open("users.csv", newline="") as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            username = row["username"]
-            password = row["password"]
-            email = row["email"]
+            username = row["username".strip()]
+            password = row["password".strip()]
+            email = row["email".strip()]
 
             driver.get("https://vjudge.net/")
 
